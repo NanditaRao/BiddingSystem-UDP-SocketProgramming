@@ -1,0 +1,25 @@
+JFLAGS =  -g
+JC = javac
+JCLASSPATH = -cp .:../../bin
+.SUFFIXES: .java .class
+
+.java.class:
+        $(JC) $(JFLAGS) $(JCLASSPATH) $*.java
+
+CLASSES = \
+        Item.java \
+        client.java \
+        offline_user.java
+
+SOME =  UDPClient.java \
+        UDPServer.java
+
+
+
+default:classes
+
+classes :$(CLASSES:.java=.class)
+main :$(SOME:.java=.class)
+
+clean:
+        $(RM) *.class
